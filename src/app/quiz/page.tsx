@@ -376,7 +376,7 @@ export default function QuizPage() {
   const [version, setVersion] = useState<1 | 2>(2);
 
   // Video source based on version
-  const bgVideo = version === 1 ? "/peace/heart.mp4" : "/peace/6.mp4";
+  const bgVideo = version === 1 ? "https://res.cloudinary.com/dzlnqcmqn/video/upload/v1770663329/heart_t8d5vn.mp4" : "https://res.cloudinary.com/dzlnqcmqn/video/upload/v1770663327/6_ytzsdd.mp4";
 
   // Computed results
   const [resultPath, setResultPath] = useState<SpiritualPathType>("isolated");

@@ -105,7 +105,7 @@ function AutoPlayVideo({ src, className }: { src: string; className: string }) {
 // ============================================
 function LightHeartVision() {
   const videos = {
-    hero: "/peace/heart.mp4",
+    hero: "https://res.cloudinary.com/dzlnqcmqn/video/upload/v1770663329/heart_t8d5vn.mp4",
     about: "/peace/5.mp4",
     midStatement: "/peace/12.mp4",
     whatIsnt: "/peace/10.mp4",
@@ -125,12 +125,6 @@ function LightHeartVision() {
         >
           <source src={videos.hero} type="video/mp4" />
         </video>
-        <div
-          className="pointer-events-none absolute inset-0 z-10 opacity-[0.15]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          }}
-        />
         <div className="relative z-20 max-w-5xl mx-auto px-8 py-32 text-center">
           <h1 className="font-ninja text-3xl md:text-4xl lg:text-5xl leading-tight mb-8">
             Embody a Higher Vision <span className="text-[#EF4444]">of a Life You Love</span>

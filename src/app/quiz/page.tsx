@@ -374,6 +374,13 @@ export default function QuizPage() {
   const [calcText, setCalcText] = useState("Analyzing your spiritual path...");
   const [direction, setDirection] = useState(1);
   const [version, setVersion] = useState<1 | 2>(2);
+  const [isQuizSubdomain, setIsQuizSubdomain] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hostname.startsWith("quiz.")) {
+      setIsQuizSubdomain(true);
+    }
+  }, []);
 
   // Video source based on version
   const bgVideo = version === 1 ? "https://res.cloudinary.com/dzlnqcmqn/video/upload/v1770663329/heart_t8d5vn.mp4" : "https://res.cloudinary.com/dzlnqcmqn/video/upload/v1770663327/6_ytzsdd.mp4";
@@ -531,7 +538,7 @@ export default function QuizPage() {
 
   return (
     <>
-      <Navbar />
+      {!isQuizSubdomain && <Navbar />}
       <div className="min-h-screen bg-[#0A0A0A] text-[#FAF6E3] overflow-hidden font-sans pt-20">
         <AnimatePresence mode="wait" custom={direction}>
           {/* ── Intro ─────────────────────────────────────────────── */}
@@ -1018,18 +1025,7 @@ export default function QuizPage() {
           )}
         </AnimatePresence>
 
-        {/* Version Toggle */}
-        <div className="fixed bottom-6 left-6 z-50">
-          <button
-            onClick={() => setVersion(version === 1 ? 2 : 1)}
-            className="flex items-center gap-2 bg-black/80 backdrop-blur-sm border border-white/20 text-white text-xs px-4 py-2 rounded-full hover:bg-black/90 transition-all"
-          >
-            <span className="opacity-60">Version</span>
-            <span className="font-bold">{version}</span>
-            <span className="opacity-40">|</span>
-            <span className="opacity-60">Switch to {version === 1 ? 2 : 1}</span>
-          </button>
-        </div>
+        {/* Version Toggle - hidden */}
       </div>
     </>
   );

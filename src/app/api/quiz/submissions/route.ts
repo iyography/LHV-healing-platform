@@ -14,17 +14,24 @@ export async function GET(request: Request) {
 
     const supabase = createServerClient();
 
-    // Verify session
+    // Verify session exists and is not expired (24 hours)
     const { data: session, error: sessionError } = await supabase
       .from('admin_sessions')
-      .select('session_id')
-      .eq('session_id', sessionId)
-      .gt('expires_at', new Date().toISOString())
+      .select('*')
+      .eq('id', sessionId)
       .single();
 
     if (sessionError || !session) {
       return NextResponse.json(
         { success: false, error: 'Invalid or expired session' },
+        { status: 401 }
+      );
+    }
+
+    const sessionAge = Date.now() - new Date(session.created_at).getTime();
+    if (sessionAge > 24 * 60 * 60 * 1000) {
+      return NextResponse.json(
+        { success: false, error: 'Session expired' },
         { status: 401 }
       );
     }

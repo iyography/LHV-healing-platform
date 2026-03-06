@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
 
 // Admin credentials - in production, use environment variables
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@ninja-ai.com';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'NinjaAdmin2026!';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@lightheartvision.com';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'LHVadmin123!';
 
 export async function POST(request: NextRequest) {
   try {
